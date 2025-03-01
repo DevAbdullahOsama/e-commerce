@@ -1,0 +1,32 @@
+@if(productDetails){
+<section class="mainSec">
+    <h1 class="capitalize text-center text-green-900 my-2 text-3xl">product details</h1>
+    <div class="grid md:grid-cols-[30%_minmax(0,1fr)]">
+        <div>
+            <owl-carousel-o [options]="imgsOptions">
+                @for (img of productDetails.images; track productDetails.id) {
+                <ng-template carouselSlide>
+                    <img [src]="img" class="w-full  object-contain" alt="">
+                </ng-template>
+                }
+            </owl-carousel-o>
+        </div>
+        <div class="ps-5">
+            <h2 class="capitalize text-green-700 py-1 pt-10">{{productDetails.title}}</h2>
+            <p class="text-slate-500 py-5">{{productDetails.description}}</p>
+            <h3 class="text-sm text-green-600">{{productDetails.category.name}}</h3>
+            <div class="px-2 py-4">
+                <div class="flex justify-between items-center">
+                    <span class="text-lg text-gray-700">{{productDetails.price}} EGP</span>
+                    <div class="flex items-center">
+                        <i class="fas fa-star text-yellow-300"></i>
+                        <span class="text-gray-700">{{productDetails.ratingsAverage}}</span>
+                    </div>
+                </div>
+            </div>
+            <button class="bg-green-600 text-white py-2 px-10 border w-[90%] rounded-sm capitalize block mx-auto">add to
+                cart</button>
+        </div>
+    </div>
+</section>
+}

@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+@import 'ngx-toastr/toastr';
+
+
+
+.btn-main{
+    @apply disabled:text-red-600 disabled:bg-gray-600 px-5 capitalize text-center mx-auto block mb-10 bg-gray-600 text-green-400 p-2 rounded-lg
+}
+.mainSec{
+    @apply bg-gray-50 rounded border shadow m-20 p-4 
+}

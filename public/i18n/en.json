@@ -1,0 +1,32 @@
+{
+    "navbar":{
+    "home": "Home",
+    "products": "Products",
+    "categories": "Categories",
+    "brands": "Brands",
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout",
+    "wishlist" : "Wishlist"
+    },
+    "lang" : "Language",
+    "loginNow" : "Login Now",
+    "email" : "Email",
+    "password" : "Password",
+    "signIn" : "Sign In",
+    "forgotPassword" : "Forgot Password",
+    "registerNow" : "Register Now",
+    "rePassword" : "Re-Password",
+    "phone" : "Phone",
+    "name" : "Name",
+    "signUp" : "Sign Up",
+    "search" : "Search",
+    "frontend" : "Frontend",
+    "developer" : "Developer",
+    "abdullah" : "Abdullah",
+    "osama" : "Osama",
+    "-christoon-" : "-Christoon-",
+    "popular" : "Popular",
+    "english" : "English",
+    "arabic" : "Arabic"
+}

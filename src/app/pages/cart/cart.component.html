@@ -1,0 +1,30 @@
+@if(cartDetails.totalCartPrice !== 0){
+    <section class="mainSec">
+        <h1 class="text-center text-3xl text-green-600 capitalize">shop cart</h1>
+        <span class="capitalize text-green-900">total cart price: {{cartDetails.totalCartPrice | currency:'GBP' }}</span>
+        <button (click)="clearCart()" class="capitalize text-sm bg-red-900 text-white rounded  p-2 block ms-auto">clear cart</button>
+        @for (cartItem of cartDetails.products; track cartItem._id) {
+            <div class="grid md:grid-cols-[10%_minmax(0,1fr)] border-b mb-2 shadow">
+                <div>
+                    <img [src]="cartItem.product.imageCover" [alt]="cartItem.product.title" class="w-full h-full object-contain">
+                </div>
+                <div class="flex justify-between items-center ps-2">
+                    <div>
+                        <h3>{{cartItem.product.title}}</h3>
+                        <h4>{{cartItem.price | currency:'GBP' }}</h4>
+                        <button (click)="removeItem(cartItem.product._id)" class="capitalize"><i class="fa-solid fa-trash-can text-green-600 text-2xl"></i> remove</button>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button (click)="updateCount(cartItem.product._id,cartItem.count + 1)" class="text-green-600 text-2xl"><i class="fa-solid fa-square-plus"></i></button>
+                        <span>{{cartItem.count}}</span>
+                        <button (click)="updateCount(cartItem.product._id,cartItem.count - 1)" class="text-green-600 text-2xl"><i class="fa-solid fa-square-minus"></i></button>
+                    </div>
+                </div>
+            </div>
+        }
+        <button [routerLink]="['/checkout',cartDetails._id]" class="capitalize btn-main">payment</button>
+    </section>
+}
+@else {
+    <h3 class="capitalize text-red-800 text-center text-3xl">no data found</h3>
+}

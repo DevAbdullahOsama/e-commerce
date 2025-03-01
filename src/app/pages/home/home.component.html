@@ -1,0 +1,65 @@
+<Section class="mainSec">
+    <div class="grid md:grid-cols-[minmax(0,1fr)_30%]">
+        <div>
+            <owl-carousel-o [options]="mainSliderOptions">
+                <ng-template carouselSlide>
+                    <img src="images/img1.avif" class="h-[300px]" alt="">
+                </ng-template>
+                <ng-template carouselSlide>
+                    <img src="images/img2.avif" class="h-[300px]" alt="">
+                </ng-template>
+                <ng-template carouselSlide>
+                    <img src="images/img3.avif" class="h-[300px]" alt="">
+                </ng-template>
+            </owl-carousel-o>
+        </div>
+        <div>
+            <img src="images/grocery-banner.png" alt="" class="h-[50%] object-contain">
+            <img src="images/grocery-banner-2.jpeg" alt="" class="h-[50%] object-contain">
+        </div>
+    </div>
+</Section>
+<section class="mainSec">
+    <h3 class="text-4xl pb-10 text-gray-900 capitalize">popular categories</h3>
+    <owl-carousel-o [options]="customOptions">
+
+        @for (cat of categories; track cat._id) {
+        <ng-template carouselSlide>
+            <img [src]="cat.image" class="w-full h-[200px] object-contain" alt="">
+            <h3 class="text-green-600 text-center">{{cat.name}}</h3>
+        </ng-template>
+        }
+
+    </owl-carousel-o>
+</section>
+<section class="mainSec">
+    <h2 class="text-4xl pb-10 text-gray-900 capitalize">popular products</h2>
+    <input [(ngModel)]="word" type="search" placeholder="Search by Name..."
+        class="bg-gray-50 border my-5 border-green-500 text-gray-900 text-2xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[70%] mx-auto p-2.5 dark:bg-gray-700 dark:border-green-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500">
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+        @for (product of products.slice(0,12) | search : word; track product.id) {
+        <div class="card border border-green-400 rounded-md overflow-hidden shadow relative">
+            <div [routerLink]="['/details',product._id]">
+                <div class="card-img">
+                    <img [src]="product.imageCover" class="w-full h-[200px] object-contain rounded-full" [alt]="product.title">
+                </div>
+                <div class="card-body px-2 py-4">
+                    <h4 class="text-green-500">{{product.category.name | titlecase}}</h4>
+                    <h3 class="font-medium">{{product.title | termtext:2 }} </h3>
+                    <div class="flex justify-between items-center">
+                        <span>{{product.price | currency : 'GBP' }}</span>
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-yellow-300"></i>
+                            <span class="text-gray-500">{{product.ratingsAverage}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button (click)="addToCart(product.id)"
+            class="bg-green-600 text-white py-2 px-10 border w-[80%] rounded-sm capitalize ">add to
+            cart</button>
+            <i role="button" class="fa-solid fa-heart text-2xl ms-3"></i>
+        </div>
+        }
+    </div>
+</section>
